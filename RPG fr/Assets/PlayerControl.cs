@@ -14,7 +14,7 @@ public class PlayerControl : MonoBehaviour
     public LayerMask groundLayer;
     bool isGrounded = true;
 
-    float playerSpeed = 6f;
+    float playerSpeed = 5f;
     
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour
         
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -3f;
+            velocity.y = -4f;
         }
 
         velocity.y += gravity * Time.deltaTime;
