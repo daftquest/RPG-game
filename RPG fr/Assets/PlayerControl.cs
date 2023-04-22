@@ -10,7 +10,7 @@ public class PlayerControl : MonoBehaviour
     Vector3 velocity;
     float gravity = -20f;
     public Transform groundChecker;
-    float groundCheckR = 0.1f;
+    float groundCheckR = 0.3125f;
     public LayerMask groundLayer;
     bool isGrounded = true;
 
