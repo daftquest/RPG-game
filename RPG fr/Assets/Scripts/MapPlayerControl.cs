@@ -66,14 +66,14 @@ public class MapPlayerControl : MonoBehaviour
 
     void EnterTown()
     {
-        Debug.Log("Successfully entered a town!");
+        Debug.Log("Successfully entered Town!");
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag == "Town")
         {
-            Debug.Log("Near a Town!!");
+            Debug.Log("Near Town!");
             isNearTown = true;
             nearTown = hit.gameObject;
         }
