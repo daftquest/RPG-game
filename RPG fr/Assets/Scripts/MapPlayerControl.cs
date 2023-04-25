@@ -11,11 +11,11 @@ public class MapPlayerControl : MonoBehaviour
     float gravity = -20f;
     public Transform groundChecker;
     float groundCheckR = 0.3125f;
-    public LayerMask groundLayer;
     bool isGrounded = true;
+    GameObject nearTown;
 
     bool isNearTown;
-    public LayerMask townLayer;
+    public LayerMask groundLayer;
 
     float playerSpeed = 5f;
     
@@ -24,6 +24,7 @@ public class MapPlayerControl : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         isNearTown = false;
+        controller.detectCollisions = true;
     }
 
     // Update is called once per frame
@@ -56,14 +57,25 @@ public class MapPlayerControl : MonoBehaviour
         {
             controller.Move(direction * playerSpeed * Time.deltaTime);
         }
+
+        if (Input.GetKey(KeyCode.Space) && isNearTown)
+        {
+            EnterTown();
+        }
+    }
+
+    void EnterTown()
+    {
+        Debug.Log("Successfully entered a town!");
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.layer == townLayer)
+        if (hit.gameObject.tag == "Town")
         {
+            Debug.Log("Near a Town!!");
             isNearTown = true;
-            Debug.Log("Near Town!");
+            nearTown = hit.gameObject;
         }
     }
 }
